@@ -1,0 +1,92 @@
+$background-color:#eee2dc;
+$font-color:#123c69;
+$checkbox-color:#ac3b61;
+$border-color:#BAB2B5;
+main
+{
+    background-color: $background-color;
+    margin: 0px 20%;
+    height: 100vh;
+    border: 1px solid $checkbox-color;
+    border-radius: 30px;
+}
+
+h1 
+{ 
+    padding: 10px;
+    text-align: center;
+    color: $font-color;
+}
+
+.done {
+    text-decoration: line-through;
+}
+.todo-input
+{
+    text-align: center;
+
+    textarea{
+        margin: 10px;
+        border: 2px solid $border-color;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: medium;
+        vertical-align: middle;
+        outline: $border-color;
+    }
+    textarea:hover{
+        border: 2px solid $border-color;
+  
+        
+    }
+    button
+    {
+        display: block;
+        padding: 5px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        border-color:   $border-color;
+        margin-left: 48%;
+        color: white;
+        background-color: $checkbox-color;
+
+        
+    }
+}
+
+.task-wrapper
+{   
+    
+    
+    ul{
+        display: flex;
+        margin-left: 45%;
+        
+    }
+    li 
+    {
+        display:block;
+        margin: 5px;
+        padding: 5px;
+        color: $font-color;
+    }
+    
+    input
+    {
+        display: block;
+        background-color: $checkbox-color;
+    }
+    input:checked{
+        background-color: $checkbox-color;
+    }
+    // input:checked + li {
+    //     text-decoration: line-through;
+    //     color: $checkbox-color;
+    // }
+}
+
+ul
+{
+    text-align: center;
+    font-size: medium;
+}

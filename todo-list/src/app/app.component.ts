@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,35 +6,45 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo-list';
-  // tasks:any [] =[];
+  @ViewChild('todoTask') todo!: { nativeElement: { value: string; }; };
+  title = 'todo list';
+  tasks:any [] =[];
 
-  // addTask(item:string){
-  //   this.tasks.push({id:this.tasks.length.toString(),name:item})
-  //   console.log(this.tasks);
-  // }
-
-  filter: 'all' | 'active' | 'done' = 'all';
-
-  allItems = [
-    { description: 'eat', done: true },
-    { description: 'sleep', done: false },
-    { description: 'play', done: false },
-    { description: 'laugh', done: false },
-  ];
-
-  get items() {
-    if (this.filter === 'all') {
-      return this.allItems;
+  addTask(item:string){
+    if(item.trim()!='')
+    {
+      this.tasks.push({id:this.tasks.length,name:item,select:false})
+      this.todo.nativeElement.value='';
     }
-    return this.allItems.filter((item) => this.filter === 'done' ? item.done : !item.done);
+    else{
+      alert('Task cannot be empty')
+    }
+
+    console.log(this.tasks);
+    
   }
 
-  addItem(description: string) {
-    this.allItems.unshift({
-      description,
-      done: false
+  onChangeTask($event:any){
+    const id =$event.target.value;
+    const isSelected = $event.target.checked;
+
+    console.log(id, isSelected)
+    this.tasks = this.tasks.map((d)=> {
+
+      if(d.id == id){
+        d.select = isSelected;
+        return d;
+      }
+      return d;
     });
+    console.log(this.tasks)
+  }
+
+  removeTask(task:any){
+    const index = this.tasks.indexOf(task);
+    if(index !== -1){
+      this.tasks.splice(index,1);
+    }
   }
  
 }

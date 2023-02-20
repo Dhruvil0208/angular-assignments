@@ -1,31 +1,24 @@
-<!-- 
-  https://angularman.wordpress.com/2017/09/04/todo-app-in-angular/
-  <h1>{{title}}</h1>
 
-<textarea name="" #todoTask cols="30" rows="5"></textarea>
-
-<button (click)="addTask(todoTask.value)">Add Task</button>
-
-<ul *ngFor="let task of tasks">
-  <input type="checkbox">
-  <li>{{task.name}}</li>
-</ul> -->
-
-<div class="main">
-  <h1>My To Do List</h1>
-  <label for="addItemInput">What would you like to do today?</label>
-
-<input
-  #newItem
-  placeholder="add an item"
-  (keyup.enter)="addItem(newItem.value); newItem.value = ''"
-  class="lg-text-input"
-  id="addItemInput" />
-
-<button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+<main>
+  <h1>{{title | titlecase}}</h1>
+  <div class="task-wrapper">
+    <ul *ngFor="let task of tasks">
+      <input type="checkbox" [checked]="task.select" (change)="onChangeTask($event)" [value]="task.id">
+      <li [ngClass]="{'done':task.select}">{{task.name}}</li>
+      <button (click)="removeTask(task)">remove</button>
+    </ul>
+  </div>
+  
+  
+  <div class="todo-input">
+    <textarea name="" #todoTask cols="40" rows="2" placeholder="Enter Your Task"></textarea>
+  
+  <button (click)="addTask(todoTask.value)">Add Task</button>
+  </div>
+</main>
 
 
-  <ul>
-    <li *ngFor="let item of items">{{item.description}}</li>
-  </ul>
-</div>
+
+
+
+
