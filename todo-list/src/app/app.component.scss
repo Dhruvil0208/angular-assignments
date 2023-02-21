@@ -63,26 +63,37 @@ h1
         margin-left: 45%;
         
     }
-    li 
+    span 
     {
-        display:block;
+        
         margin: 5px;
         padding: 5px;
+        padding-top: 10px;
         color: $font-color;
+        text-align: center;
+        vertical-align: middle;
     }
     
     input
     {
         display: block;
         background-color: $checkbox-color;
+        margin: 5px;
+        padding:5px;
     }
     input:checked{
         background-color: $checkbox-color;
     }
-    // input:checked + li {
-    //     text-decoration: line-through;
-    //     color: $checkbox-color;
-    // }
+    button{
+       
+        padding: 5px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        border-color:   $border-color;
+      
+        color: white;
+        background-color: $checkbox-color;
+    }
 }
 
 ul

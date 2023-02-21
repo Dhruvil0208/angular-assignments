@@ -4,8 +4,10 @@
   <div class="task-wrapper">
     <ul *ngFor="let task of tasks">
       <input type="checkbox" [checked]="task.select" (change)="onChangeTask($event)" [value]="task.id">
-      <li [ngClass]="{'done':task.select}">{{task.name}}</li>
-      <button (click)="removeTask(task)">remove</button>
+      <span  [style.text-decoration]="task.select ? 'line-through':'none'" #span>{{task.name}}</span>
+      <button (click)="removeTask(task)">Remove</button>
+      <!-- <button (click)="editTask(task)">Edit</button>
+      <button (click)="saveTask(span)">Save</button> -->
     </ul>
   </div>
   
