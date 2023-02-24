@@ -7,9 +7,12 @@ import { Component ,ViewChild} from '@angular/core';
 })
 export class AppComponent {
   @ViewChild('todoTask') todo!: { nativeElement: { value: string; }; };
+  @ViewChild('span') span :any;
+
+
   title = 'todo list';
   tasks:any [] =[];
-  editContent:any='';
+  editContent = true;
 
   constructor(){
 
@@ -20,6 +23,9 @@ export class AppComponent {
 
   }
   
+
+
+
   addTask(item:string){
     if(item.trim()!='')
     {
@@ -59,19 +65,24 @@ export class AppComponent {
     localStorage.setItem('todolist',JSON.stringify(this.tasks))
   }
 
-  // editTask(task:any){
-  //   this.editContent = task;
-  // }
+  editTask(span:HTMLElement){
+    span.contentEditable= "true";
+    span.focus();
+  }
 
-  // saveTask(task:any){
-  //   if(this.editContent === task)
-  //   {
-  //     task.name = task.name.trim();
-  //     if(task.name.length === 0){
-  //       this.removeTask(task);
-  //     }
-  //     this.editContent = '';
-  //   }
-  // }
- 
+  saveTask(task:any,span:HTMLElement){
+    const index = this.tasks.indexOf(task);
+    
+    let str:string|undefined = span.textContent?.trim();
+    if(str === ""){
+      this.removeTask(task);
+    }
+    else if (str !=''){
+      this.tasks[index].name = str;
+      localStorage.setItem('todolist',JSON.stringify(this.tasks))
+    }
+    span.textContent = task.name;
+    
+    span.contentEditable = "false"
+  }
 }

@@ -2,21 +2,31 @@ $background-color:#eee2dc;
 $font-color:#123c69;
 $checkbox-color:#ac3b61;
 $border-color:#BAB2B5;
+
 main
 {
     background-color: $background-color;
-    margin: 0px 20%;
+    margin: 0px 30%;
     height: 100vh;
-    border: 1px solid $checkbox-color;
+    border: 1px solid $font-color;
     border-radius: 30px;
 }
 
-h1 
-{ 
-    padding: 10px;
-    text-align: center;
-    color: $font-color;
+header{
+    h1{
+        padding: 10px;
+        text-align: center;
+        color: $font-color;
+        
+    }
+    hr{
+        margin: 0 5%;
+        border: 3px solid $font-color;
+        
+    }
 }
+
+
 
 .done {
     text-decoration: line-through;
@@ -24,8 +34,12 @@ h1
 .todo-input
 {
     text-align: center;
-
+    
     textarea{
+        min-width: 300px;
+        min-height: 50px;
+       max-width: 700px;
+       max-height: 70px;
         margin: 10px;
         border: 2px solid $border-color;
         border-radius: 5px;
@@ -41,12 +55,12 @@ h1
     }
     button
     {
-        display: block;
+        
         padding: 5px 20px;
         margin: 10px;
         border-radius: 5px;
         border-color:   $border-color;
-        margin-left: 48%;
+        
         color: white;
         background-color: $checkbox-color;
 
@@ -56,48 +70,86 @@ h1
 
 .task-wrapper
 {   
-    
+    margin: 5%;
+    border: 1px solid $font-color;
+    border-radius: 5px;
+    height: 70%;
+    overflow-y: auto;
+    background-color: white;
     
     ul{
-        display: flex;
-        margin-left: 45%;
-        
-    }
-    span 
-    {
-        
-        margin: 5px;
+        width: 100%;
         padding: 5px;
-        padding-top: 10px;
-        color: $font-color;
         text-align: center;
-        vertical-align: middle;
+        font-size: medium;
+        
+        span 
+        {
+            display: inline-block;
+            width: 50%;
+            margin: 5px;
+            padding: 5px;
+            padding-bottom: 15px;
+            color: $font-color;
+            text-align: start;
+            vertical-align: middle;
+            word-wrap: break-word
+        }
+        
+        input
+        {
+            width:20px;
+            height: 20px;
+            font-size: large;
+            background-color: $checkbox-color;
+            margin: 5px;
+            padding:5px;
+            padding-top: 10px;
+        }
+        input:checked{
+            background-color: $checkbox-color;
+        }
+        button{
+           
+            padding: 5px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            border-color:   $border-color;
+          
+            color: white;
+            background-color: $checkbox-color;
+        }
     }
-    
-    input
-    {
-        display: block;
-        background-color: $checkbox-color;
-        margin: 5px;
-        padding:5px;
-    }
-    input:checked{
-        background-color: $checkbox-color;
-    }
-    button{
-       
-        padding: 5px 20px;
-        margin: 10px;
-        border-radius: 5px;
-        border-color:   $border-color;
-      
-        color: white;
-        background-color: $checkbox-color;
-    }
+   
 }
 
-ul
-{
-    text-align: center;
-    font-size: medium;
-}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $checkbox-color;
+    border-radius: 2px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:$font-color;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background:$checkbox-color;
+    border-radius: 2px;
+  }
+
+
+  span[contentEditable=true] {
+    border: 1px solid black;
+    padding: 3px;
+  }

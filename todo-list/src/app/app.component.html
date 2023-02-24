@@ -1,26 +1,41 @@
-
 <main>
-  <h1>{{title | titlecase}}</h1>
+  <header>
+    <h1>{{ title | titlecase }}</h1>
+    <hr />
+  </header>
   <div class="task-wrapper">
-    <ul *ngFor="let task of tasks">
-      <input type="checkbox" [checked]="task.select" (change)="onChangeTask($event)" [value]="task.id">
-      <span  [style.text-decoration]="task.select ? 'line-through':'none'" #span>{{task.name}}</span>
+    <ul *ngFor="let task of tasks; let i=index">
+      <input
+        type="checkbox"
+        [checked]="task.select"
+        (change)="onChangeTask($event)"
+        [value]="task.id"
+      />
+
+      <span
+        [ngClass]="{ editable: editContent === task }"
+        [style.text-decoration]="task.select ? 'line-through' : 'none'"
+        #span
+        >{{ task.name }}
+      </span>
+
       <button (click)="removeTask(task)">Remove</button>
-      <!-- <button (click)="editTask(task)">Edit</button>
-      <button (click)="saveTask(span)">Save</button> -->
+      <button (click)="editTask(span)">Edit</button>
+      <button (click)="saveTask(task,span)">Save</button>
     </ul>
   </div>
-  
-  
+
   <div class="todo-input">
-    <textarea name="" #todoTask cols="40" rows="2" placeholder="Enter Your Task"></textarea>
-  
-  <button (click)="addTask(todoTask.value)">Add Task</button>
+    <div>
+      <textarea
+        name=""
+        #todoTask
+        cols="40"
+        rows="2"
+        placeholder="Enter Your Task"
+      ></textarea>
+    </div>
+
+    <button (click)="addTask(todoTask.value)">Add Task</button>
   </div>
 </main>
-
-
-
-
-
-
